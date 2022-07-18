@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace定位接口-接口的完全限定名：包名.接口名-->
+<mapper namespace="com.mapper.TabAccount1Mapper">
+    <select id="selectAll" resultType="java.util.Map">
+        select * from tab_account
+    </select>
+    <!--一个参数时 #里面随便写-->
+    <select id="selectById" resultType="com.entry.TabAccount" parameterType="int">
+        select * from tab_account where accountid = #{accountid}
+
+    </select>
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="config/db.properties"></properties>
+    <!--是否开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn。-->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+    <!--配置数据源：default：默认的数据源配置-->
+    <environments default="development">
+        <!--一个环境配置：id：是一个唯一性标识-->
+        <environment id="development">
+            <!--事务管理：JDBC：程序自己控制  Managed：容器管理-->
+            <transactionManager type="JDBC"/>
+            <!--pooled：数据库连接池的形式提供链接
+                unpooled:普通链接，不适用数据库连接池
+                   JNDI：远程连接数据库
+
+            -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${db.className}"/>
+                <property name="url" value="${db.url}"/>
+                <property name="username" value="${db.user}"/>
+                <property name="password" value="${db.pwd}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--加载映射文件：让主配置文件知道你有哪些映射文件-->
+    <mappers>
+        <mapper resource="com/mapper/TabAccountMapper.xml"/>
+        <mapper resource="com/mapper/TabAccount1Mapper.xml"/>
+        <mapper resource="com/mapper/TabFunctionMapper.xml"/>
+    </mappers>
+</configuration>

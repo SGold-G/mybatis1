@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace的作用：定位文件-->
+<mapper namespace="com.mapper">
+    <!--select标签：书写查询语句id：唯一性标识，定位sql-->
+    <!--namespace定位文件 id定位sql-->
+    <!--resultType：指明映射关系：map：每一行需要按照map映射，自动列明做key，列值做value-->
+    <!--resultType:如果写的是实体：自动列名对应属性名自动映射。默认自动映射是开启的-->
+    <select id="selectAccount" resultType="java.util.Map">
+        select * from tab_account
+    </select>
+    <select id="selectAccount2" resultType="com.entry.TabAccount">
+        select * from tab_account
+    </select>
+</mapper>
